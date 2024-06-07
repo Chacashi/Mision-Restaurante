@@ -5,18 +5,28 @@ using UnityEngine;
 public class ControlerBarrido : MonoBehaviour
 {
     Animator animator;
-    bool _static;
     public bool _Entrada;
     bool _Salida;
-    private void Awake()
+    void Awake()
     {
         animator = GetComponent<Animator>();
     }
-    private void Start()
+    void Start()
     {
         if(_Entrada == true)
         {
             animator.SetTrigger("Entrada");
         }
+    }
+    void Update()
+    {
+        if(_Salida == true)
+        {
+            animator.SetTrigger("Salida");
+        }
+    }
+    public void SetActiveAnimationSalida()
+    {
+        _Salida = true;
     }
 }
