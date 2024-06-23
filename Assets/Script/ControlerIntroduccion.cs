@@ -7,6 +7,7 @@ public class ControlerIntroduccion : MonoBehaviour
     public CuyMovie Cuy;
     public PlayerControler Player;
     public sbyte index = 0;
+    public GameObject Buton;
     private void Start()
     {
         Cuy.SetActiveCaminata();
@@ -28,6 +29,10 @@ public class ControlerIntroduccion : MonoBehaviour
                     Player.Dialogo(index);
                 }
             }
+        }
+        if (Cuy.Confirmar == false&&index>1)
+        {
+            Buton.SetActive(true);
         }
     }
 }

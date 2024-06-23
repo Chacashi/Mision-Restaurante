@@ -9,7 +9,6 @@ public class CuyMovie : MonoBehaviour
     public GameObject NubePlayer;
     public EfectoTexto TextoCuy;
     public GameObject Cuynube;
-    public GameObject[] Botones;
     public float Speed;
     bool Active;
     bool _confirmar;
@@ -60,7 +59,6 @@ public class CuyMovie : MonoBehaviour
         if (n == 8)
         {
             _confirmar = false;
-            Botones[1].SetActive(true);
             TextoCuy.Inprimir(" Así es. Basta de diálogos. ¡Vamos a la cocina! ");
         }
         NubePlayer.SetActive(false);
