@@ -5,6 +5,18 @@ TagManager:
   serializedVersion: 2
   tags:
   - Resepcion
+  - PapaCruda
+  - Cuchillo
+  - Fondo oscuro carne
+  - Cebolla
+  - Guarnicion aromatica
+  - Aji amarillo
+  - Tomate
+  - Lomo fino crudo
+  - Arroz
+  - Olla
+  - Sarten
+  - Papa en bastones
   layers:
   - Default
   - TransparentFX

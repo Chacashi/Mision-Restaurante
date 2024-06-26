@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &21613787 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9188975088767745123, guid: 2b087ae0e9ee2d54eb9d42bf5a8bdb9a, type: 3}
+  m_PrefabInstance: {fileID: 1567718164}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccb6dd89d5d8277469d4ed8554f4f494, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &460842006
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,6 +146,7 @@ GameObject:
   - component: {fileID: 460842010}
   - component: {fileID: 460842009}
   - component: {fileID: 460842008}
+  - component: {fileID: 460842011}
   m_Layer: 5
   m_Name: Jugar
   m_TagString: Untagged
@@ -205,31 +217,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 460842009}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1742874199}
-        m_TargetAssemblyTypeName: CambioScene, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Niveles
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1368163418}
-        m_TargetAssemblyTypeName: ControlerBarrido, Assembly-CSharp
-        m_MethodName: SetActiveAnimationSalida
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &460842009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,6 +256,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 460842006}
   m_CullTransparentMesh: 1
+--- !u!114 &460842011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 460842006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fab35a05ab2949e40b9a8085bdd9de13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CambiarScene: {fileID: 21613787}
+  Barrido: {fileID: 812506334}
+  Scena: Niveles
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -439,6 +442,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 745574393}
   m_CullTransparentMesh: 1
+--- !u!114 &812506334 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4625820628520361445, guid: 90eb49a5456327d43b5952d5bfc891b8, type: 3}
+  m_PrefabInstance: {fileID: 124684308107697403}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b720e0e5ff0292c41af02ccc17c54f79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &904490409
 GameObject:
   m_ObjectHideFlags: 0
@@ -541,17 +555,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1368163418 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4625820628520361445, guid: 90eb49a5456327d43b5952d5bfc891b8, type: 3}
-  m_PrefabInstance: {fileID: 124684308107697403}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b720e0e5ff0292c41af02ccc17c54f79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1473714995
 GameObject:
   m_ObjectHideFlags: 0
@@ -862,17 +865,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1742874199 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9188975088767745123, guid: 2b087ae0e9ee2d54eb9d42bf5a8bdb9a, type: 3}
-  m_PrefabInstance: {fileID: 1567718164}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccb6dd89d5d8277469d4ed8554f4f494, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &124684308107697403
 PrefabInstance:
   m_ObjectHideFlags: 0
