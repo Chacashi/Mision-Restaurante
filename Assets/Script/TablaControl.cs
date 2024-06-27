@@ -5,7 +5,6 @@ using UnityEngine;
 public class TablaControl : MonoBehaviour
 {
     public GameObject Ingrediente;
-    public bool Confirmar = false;
     public void Guardar(GameObject food)
     {
         if (Ingrediente == null)
@@ -16,17 +15,6 @@ public class TablaControl : MonoBehaviour
         else
         {
             Destroy(food);
-        }
-    }
-    private void Update()
-    {
-        if(Ingrediente != null)
-        {
-            Confirmar = true;
-        }
-        else
-        {
-            Confirmar=false;
         }
     }
     public void Limpiar()

@@ -1,20 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class GameManagerControl : MonoBehaviour
 {
     [HeaderAttribute("Hornillas")]
-    public TablaControl Hornilla1;
-    public TablaControl Hornilla2;
-    public TablaControl Hornilla3;
-    public TablaControl Hornilla4;
+    public TablaControl[] Hornillas=new TablaControl[4];
 
     [HeaderAttribute("Mesas")]
-    public TablaControl Mesa1;
-    public TablaControl Mesa2;
-    public TablaControl Mesa3;
-    public TablaControl Mesa4;
+    public TablaControl[] Mesas=new TablaControl[4];
 
     [HeaderAttribute("Ingredientes")]
     public GameObject[] Ingrediente;
@@ -29,51 +25,110 @@ public class GameManagerControl : MonoBehaviour
     {
 
         //Mesa
-        Crafteo(Mesa1, Mesa2, Mesa3, Mesa4, "Cuchillo", "PapaCruda", 0);
-        Crafteo(Mesa1, Mesa2, Mesa3, Mesa4, "Cuchillo", "Cebolla", 2);
-        Crafteo(Mesa1, Mesa2, Mesa3, Mesa4, "Cuchillo", "Aji amarillo", 3);
-        Crafteo(Mesa1, Mesa2, Mesa3, Mesa4, "Cuchillo", "Tomate", 4);
-        Crafteo(Mesa1, Mesa2, Mesa3, Mesa4, "Cuchillo", "Lomo fino crudo", 5);
-        Crafteo(Mesa1, Mesa2, Mesa3, Mesa4, "Arroz", "Olla", 6);
+        Crafteo(Mesas, "Cuchillo", "PapaCruda", 0);
+        Crafteo(Mesas, "Cuchillo", "Cebolla", 2);
+        Crafteo(Mesas, "Cuchillo", "Aji amarillo", 3);
+        Crafteo(Mesas, "Cuchillo", "Tomate", 4);
+        Crafteo(Mesas, "Cuchillo", "Lomo fino crudo", 5);
+        
         //Hornillas
-        Crafteo(Hornilla1, Hornilla2, Hornilla3, Hornilla4, "Fondo oscuro carne", "Guarnicion aromatica", 1);
-        Crafteo(Hornilla1, Hornilla2, Hornilla3, Hornilla4, "Papa en bastones", "Sarten", 7);
+        Crafteo(Hornillas, "Fondo oscuro carne", "Guarnicion aromatica", 1);
+        Crafteo(Hornillas, "Arroz", "Olla", 6);
+        Crafteo(Hornillas, "Papa en bastones", "Sarten", 7);
+
+        Crafteo(Hornillas, "Lomo fino en pedazos", "aji amarrillo en juliana", "Tomate en juliana", "cebolla en gajos", 8);
 
     }
-    void Crafteo(TablaControl a,TablaControl b,TablaControl c,TablaControl d,string IngredienteA,string IngredienteB,sbyte Index)
+    //Crafteos de 2
+    void Crafteo(TablaControl[] tablas, string IngredienteA, string IngredienteB, sbyte Index)
     {
-        Crear(a, b, IngredienteA, IngredienteB, Index);
-        Crear(a, c, IngredienteA, IngredienteB, Index);
-        Crear(a, d, IngredienteA, IngredienteB, Index);
-        Crear(b, c, IngredienteA, IngredienteB, Index);
-        Crear(b, d, IngredienteA, IngredienteB, Index);
-        Crear(c, d, IngredienteA, IngredienteB, Index);
-    }
-    void Limpiar(TablaControl a,TablaControl b)
-    {
-        a.Limpiar();
-        b.Limpiar();
-    }
-    private void Crear(TablaControl mesaA, TablaControl mesaB,string IngredenteA,string IngredenteB,sbyte Index)
-    {
-        if (mesaA != null && mesaB != null && mesaA.Confirmar && mesaB.Confirmar)
+        for (int i = 0; i < tablas.Length; ++i)
         {
-            if (mesaA.Ingrediente != null && mesaB.Ingrediente != null &&
-                ((mesaA.Ingrediente.gameObject.tag == IngredenteA && mesaB.Ingrediente.gameObject.tag == IngredenteB) ||
-                 (mesaB.Ingrediente.gameObject.tag == IngredenteA && mesaA.Ingrediente.gameObject.tag == IngredenteB)))
+            for (int j = 0; j < tablas.Length; ++j)
             {
-                if (QuantityIngredientes[Index]==false)
+                if (tablas[i].Ingrediente != null && tablas[j].Ingrediente != null &&
+                    tablas[i].Ingrediente.gameObject.tag == IngredienteA && tablas[j].Ingrediente.gameObject.tag == IngredienteB)
                 {
-                    Limpiar(mesaA, mesaB);
-                    QuantityIngredientes[Index] = true;
-                    Ingrediente[Index].SetActive(true);
-                }
-                else
-                {
-                    Limpiar(mesaA, mesaB);
+                    Crear(tablas[i], tablas[j],Index);
                 }
             }
         }
+    }
+    //Crafteos de 3
+    void Crafteo(TablaControl a, TablaControl b, TablaControl c, TablaControl d, string IngredienteA, string IngredienteB, string IngredienteC, sbyte Index)
+    {
+        TablaControl[] tablas = new TablaControl[] { a, b, c, d };
+
+        for (int i = 0; i < tablas.Length - 2; ++i)
+        {
+            for (int j = i + 1; j < tablas.Length - 1; ++j)
+            {
+                for (int k = j + 1; k < tablas.Length; ++k)
+                {
+                    Crear(tablas[i],tablas[j],tablas[k],Index);
+                }
+            }
+        }
+    }
+    //Crafteos de 4
+    void Crafteo(TablaControl[] tablas , string IngredienteA, string IngredienteB, string IngredienteC, string IngredienteD,sbyte Index)
+    {
+        for (int i = 0; i < tablas.Length; ++i)
+        {
+            for (int j = 0; j < tablas.Length; ++j)
+            {
+                for (int k = 0; k < tablas.Length; ++k)
+                {
+                    for (int l = 0; l < tablas.Length; ++l)
+                    {
+                        if (tablas[i].Ingrediente != null && tablas[j].Ingrediente != null && tablas[k].Ingrediente != null &&tablas[l].Ingrediente != null &&
+                           (tablas[i].Ingrediente.gameObject.tag == IngredienteA && tablas[j].Ingrediente.gameObject.tag == IngredienteB &&
+                           tablas[k].Ingrediente.gameObject.tag== IngredienteC && tablas[l].Ingrediente.gameObject.tag== IngredienteD))
+                        {
+                            Crear(tablas[i],tablas[j], tablas[k], tablas[l],Index);
+                        }else if (tablas[0].Ingrediente != null && tablas[1].Ingrediente != null && tablas[2].Ingrediente != null && tablas[3].Ingrediente != null)
+                        {
+                            tablas[0].Limpiar();
+                            tablas[1].Limpiar();
+                            tablas[2].Limpiar();
+                            tablas[3].Limpiar();
+                        }
+                    }
+                }
+            }
+        }
+    }
+    void Crear(TablaControl a, TablaControl b,sbyte Index)
+    {
+        if (QuantityIngredientes[Index] == false)
+        {
+            QuantityIngredientes[Index] = true;
+            Ingrediente[Index].SetActive(true);
+            a.Limpiar();
+            b.Limpiar();
+        }
+        else
+        {
+            a.Limpiar();
+            b.Limpiar();
+        }
+    }
+    void Crear(TablaControl a, TablaControl b,TablaControl c,sbyte Index)
+    {
+        Crear(a,b,Index);
+        if (QuantityIngredientes[Index] == false)
+        {
+            c.Limpiar();
+        }
+        else
+        {
+            c.Limpiar();
+        }
+    }
+    void Crear(TablaControl a,TablaControl b,TablaControl c,TablaControl d,sbyte Index)
+    {
+        Crear(a, b,Index);
+        Crear(c,d,Index);
     }
     void ReiniciarCocina()
     {

@@ -8,10 +8,15 @@ public class CambioScene : MonoBehaviour
     float TiempoIncial=0;
     bool Comenzar;
     string scene;
-    public void LoadScene(string sceneName)
+    public void LoadScene(string sceneName,float Tiempo)
     {
+        this.Tiempo = Tiempo;
         Comenzar = true;
         scene = sceneName;
+    }
+    public void LoadScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
     private void Update()
     {
