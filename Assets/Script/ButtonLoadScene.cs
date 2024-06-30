@@ -17,7 +17,7 @@ public class ButtonLoadScene : MonoBehaviour
     void CuandoCliqueo()
     {
         Barrido.SetActiveAnimationSalida();
-        CambiarScene.LoadScene(Scena);
+        CambiarScene.LoadScene(Scena,1);
     }
     
 }

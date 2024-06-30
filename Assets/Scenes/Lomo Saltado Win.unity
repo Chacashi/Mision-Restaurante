@@ -299,6 +299,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barrido
       objectReference: {fileID: 0}
+    - target: {fileID: 1600111029981970011, guid: 90eb49a5456327d43b5952d5bfc891b8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5842072839461194838, guid: 90eb49a5456327d43b5952d5bfc891b8, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -741,8 +745,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.13127445, g: 0.27401018, b: 0.7075472, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 079b21e7bc9fee94799dbe119a98ef9b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -761,8 +765,8 @@ Transform:
   m_GameObject: {fileID: 1683145821}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.03, y: -1.14, z: 0}
-  m_LocalScale: {x: 7.5892806, y: 2.7905557, z: 1}
+  m_LocalPosition: {x: -0.42, y: -0.83, z: 0}
+  m_LocalScale: {x: 6.4933887, y: 2.3875995, z: 0.8556}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

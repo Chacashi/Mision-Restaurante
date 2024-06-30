@@ -27,6 +27,6 @@ public class ControlerBarrido : MonoBehaviour
     }
     public void SetActiveAnimationSalida()
     {
-        _Salida = true;
+         _Salida = true;
     }
 }

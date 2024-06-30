@@ -4,30 +4,34 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class CambioScene : MonoBehaviour
 {
-    float Tiempo=1;
-    float TiempoIncial=0;
-    bool Comenzar;
-    string scene;
-    public void LoadScene(string sceneName,float Tiempo)
+    static float _Timer;
+    static bool Comenzar=false;
+    static string scene;
+    private void Update()
     {
-        this.Tiempo = Tiempo;
+        if (Comenzar == true)
+        {
+            print(_Timer);
+            _Timer -= Time.deltaTime;
+            if (_Timer <= 0)
+            {
+                if (scene != null)
+                {
+                    SceneManager.LoadScene(scene);
+                    Comenzar = false;
+                }
+            }
+        }
+    }
+    public void LoadScene(string sceneName, float Tiempo)
+    {
+       _Timer = Tiempo;
         Comenzar = true;
         scene = sceneName;
     }
     public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
-    }
-    private void Update()
-    {
-        if (Comenzar == true)
-        {
-            TiempoIncial += Time.deltaTime;
-        }
-        if (Tiempo <= TiempoIncial)
-        {
-            SceneManager.LoadScene(scene);
-        }
     }
 
 }

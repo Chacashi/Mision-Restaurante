@@ -12,6 +12,8 @@ public class GameManagerControl : MonoBehaviour
     [HeaderAttribute("Mesas")]
     public TablaControl[] Mesas=new TablaControl[4];
 
+    public TablaControl[] Emplado=new TablaControl[3];
+
     [HeaderAttribute("Ingredientes")]
     public GameObject[] Ingrediente;
 
@@ -21,22 +23,33 @@ public class GameManagerControl : MonoBehaviour
     {
         QuantityIngredientes=new bool[Ingrediente.Length];
     }
+    private void Start()
+    {
+        Time.timeScale = 1.0f;
+    }
     private void Update()
     {
 
-        //Mesa
+        //Mesa 2
         Crafteo(Mesas, "Cuchillo", "PapaCruda", 0);
         Crafteo(Mesas, "Cuchillo", "Cebolla", 2);
         Crafteo(Mesas, "Cuchillo", "Aji amarillo", 3);
         Crafteo(Mesas, "Cuchillo", "Tomate", 4);
         Crafteo(Mesas, "Cuchillo", "Lomo fino crudo", 5);
         
-        //Hornillas
+        //Hornillas 2
         Crafteo(Hornillas, "Fondo oscuro carne", "Guarnicion aromatica", 1);
         Crafteo(Hornillas, "Arroz", "Olla", 6);
         Crafteo(Hornillas, "Papa en bastones", "Sarten", 7);
 
+        //Hornillas 3
+        Crafteo(Emplado, "Lomo Salteado", "arros graneado", "Papas fritas", 10);
+
+
+        //Hornillas 4
         Crafteo(Hornillas, "Lomo fino en pedazos", "aji amarrillo en juliana", "Tomate en juliana", "cebolla en gajos", 8);
+        Crafteo(Hornillas, "Lomo salteado con verduras", "Nage", "culantro","Premix", 9);
+
 
     }
     //Crafteos de 2
@@ -55,17 +68,21 @@ public class GameManagerControl : MonoBehaviour
         }
     }
     //Crafteos de 3
-    void Crafteo(TablaControl a, TablaControl b, TablaControl c, TablaControl d, string IngredienteA, string IngredienteB, string IngredienteC, sbyte Index)
+    void Crafteo(TablaControl[] tablas, string IngredienteA, string IngredienteB, string IngredienteC, sbyte Index)
     {
-        TablaControl[] tablas = new TablaControl[] { a, b, c, d };
-
-        for (int i = 0; i < tablas.Length - 2; ++i)
+        for (int i = 0; i < tablas.Length ; ++i)
         {
-            for (int j = i + 1; j < tablas.Length - 1; ++j)
+            for (int j = 0; j < tablas.Length ; ++j)
             {
-                for (int k = j + 1; k < tablas.Length; ++k)
+                for (int k = 0; k < tablas.Length; ++k)
                 {
-                    Crear(tablas[i],tablas[j],tablas[k],Index);
+
+                    if (tablas[i].Ingrediente != null && tablas[j].Ingrediente != null && tablas[k].Ingrediente != null &&  
+                       (tablas[i].Ingrediente.gameObject.tag == IngredienteA && tablas[j].Ingrediente.gameObject.tag == IngredienteB &&
+                       tablas[k].Ingrediente.gameObject.tag == IngredienteC))
+                    {
+                        Crear(tablas[i], tablas[j], tablas[k], Index);
+                    }
                 }
             }
         }
@@ -81,17 +98,11 @@ public class GameManagerControl : MonoBehaviour
                 {
                     for (int l = 0; l < tablas.Length; ++l)
                     {
-                        if (tablas[i].Ingrediente != null && tablas[j].Ingrediente != null && tablas[k].Ingrediente != null &&tablas[l].Ingrediente != null &&
+                        if (tablas[i].Ingrediente != null && tablas[j].Ingrediente != null && tablas[k].Ingrediente != null && tablas[l].Ingrediente != null &&
                            (tablas[i].Ingrediente.gameObject.tag == IngredienteA && tablas[j].Ingrediente.gameObject.tag == IngredienteB &&
-                           tablas[k].Ingrediente.gameObject.tag== IngredienteC && tablas[l].Ingrediente.gameObject.tag== IngredienteD))
+                           tablas[k].Ingrediente.gameObject.tag == IngredienteC && tablas[l].Ingrediente.gameObject.tag == IngredienteD))
                         {
-                            Crear(tablas[i],tablas[j], tablas[k], tablas[l],Index);
-                        }else if (tablas[0].Ingrediente != null && tablas[1].Ingrediente != null && tablas[2].Ingrediente != null && tablas[3].Ingrediente != null)
-                        {
-                            tablas[0].Limpiar();
-                            tablas[1].Limpiar();
-                            tablas[2].Limpiar();
-                            tablas[3].Limpiar();
+                            Crear(tablas[i], tablas[j], tablas[k], tablas[l], Index);
                         }
                     }
                 }
@@ -118,6 +129,7 @@ public class GameManagerControl : MonoBehaviour
         Crear(a,b,Index);
         if (QuantityIngredientes[Index] == false)
         {
+            print("Entro");
             c.Limpiar();
         }
         else
@@ -129,6 +141,14 @@ public class GameManagerControl : MonoBehaviour
     {
         Crear(a, b,Index);
         Crear(c,d,Index);
+    }
+    public void Reanudar()
+    {
+        Time.timeScale = 1.0f;
+    }
+    public void Pause()
+    {
+        Time.timeScale = 0;
     }
     void ReiniciarCocina()
     {
