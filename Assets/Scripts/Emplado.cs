@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Emplado : MonoBehaviour
 {
+    public MisionControl misionControl;
     public string[] names;
     public string[] Name {  get { return names; } set { names = value; } }
     bool confirmar=false;

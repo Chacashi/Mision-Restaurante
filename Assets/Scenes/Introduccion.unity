@@ -879,7 +879,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CambiarScene: {fileID: 62251812}
   Barrido: {fileID: 274046946}
-  Scena: Nivel1
+  Scena: Tutorial
 --- !u!1 &690787094
 GameObject:
   m_ObjectHideFlags: 0
@@ -2582,7 +2582,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CambiarScene: {fileID: 62251812}
   Barrido: {fileID: 274046946}
-  Scena: Nivel1
+  Scena: Tutorial
 --- !u!114 &2104144870
 MonoBehaviour:
   m_ObjectHideFlags: 0

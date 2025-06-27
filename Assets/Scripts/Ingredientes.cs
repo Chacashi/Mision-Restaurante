@@ -38,6 +38,10 @@ public class Ingredientes : MonoBehaviour
                 mause = false;
                 transform.position = Tabla.transform.position;
                 Tabla.Guardar(this.gameObject);
+                if (Tabla.misionControl != null && this.gameObject.CompareTag("Papas fritas"))
+                {
+                    Tabla.misionControl.NotificarIngrediente(this.gameObject);
+                }
             }
             else
             {
