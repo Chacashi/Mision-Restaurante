@@ -18,6 +18,10 @@ public class EfectoTexto : MonoBehaviour
     }
     private void Update()
     {
+        if (_text != null && !_text.enabled)
+        {
+            Debug.LogWarning("¡Cuidado! El componente de texto está desactivado.");
+        }
         if (Comenzar == true)
         {
             Velocidad_textIncial += Time.deltaTime;
@@ -38,6 +42,7 @@ public class EfectoTexto : MonoBehaviour
     }
     public void Inprimir(string texto)
     {
+        _text.enabled = true;       
         _Dialogo = texto;
         Comenzar = true;
         index = 0;
